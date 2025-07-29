@@ -1,0 +1,5 @@
+[
+	"./src/dropdown-app/index.tsx",
+	"./src/dropdown-service/index.tsx",
+	"./src/Toolbar/index.tsx"
+]

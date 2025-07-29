@@ -3,6 +3,73 @@
 	"$schema": "../../../node_modules/@finsemble/finsemble-core/configs/schemas/fileBasedSchemas/appsConfigFile.schema.json",
 	"apps": [
 		{
+			"appId": "dropdown-service",
+			"type": "web",
+			"details": {
+				"url": "$applicationRoot/dropdown-service/index.html"
+			},
+			"hostManifests": {
+				"Finsemble": {
+					"appService": true
+				}
+			}
+		},
+		{
+			"appId": "childWindowComponent",
+			"name": "childWindowComponent",
+			"title": "childWindowComponent",
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"url": "$moduleRoot/ui-components/NonConfiguredComponent/index.html",
+						"affinity": "systemComponents",
+						"options": {
+							"resizable": false,
+							"autoShow": false,
+							"backgroundThrottling": false
+						},
+						"top": "center",
+						"left": "center",
+						"width": 400,
+						"height": 432,
+						"minHeight": 0,
+						"minWidth": 0,
+						"autoShow": false,
+						"windowType": "WebWindow",
+						"ephemeral": true,
+						"showTaskbarIcon": false
+					},
+					"component": {
+						"category": "system",
+						"//preload": "$applicationRoot/custom-preloads/PAPIPreload/PAPIPreload.js"
+					},
+					"foreign": {
+						"services": {
+							"windowService": {
+								"allowAutoArrange": false,
+								"allowGrouping": false,
+								"allowTabbing": false,
+								"allowSnapping": false,
+								"isArrangable": false
+							}
+						},
+						"components": {
+							"App Launcher": {
+								"launchableByUser": false
+							},
+							"Window Manager": {
+								"FSBLHeader": false
+							}
+						}
+					}
+				}
+			},
+			"type": "web",
+			"details": {
+				"url": "$moduleRoot/ui-components/NonConfiguredComponent/index.html"
+			}
+		},
+		{
 			"appId": "ChartIQ Example App",
 			"name": "ChartIQ Example App",
 			"type": "web",

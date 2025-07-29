@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@finsemble/finsemble-core";
+import { DropdownContainerAsync } from "../dropdown-app/DropdownContainerAsync";
 
 const dropdownWindowHandle = "dropdown-container-async";
 
@@ -28,13 +29,13 @@ export const DropdownTriggerAsync = () => {
         event.preventDefault();
         setTriggered(true);
         const triggerElementBounds = el.current!.getBoundingClientRect();
-        const parentContainerBounds = { x: 0, y: 0, h: 0, w: 0 };
+        const parentContainerBounds = { x: 0, y: 0, h: 39, w: 0 };
         const xPosition = Math.round(triggerElementBounds.x + parentContainerBounds.x);
-        const yPosition = Math.round(parentContainerBounds.y + triggerElementBounds.y);
+        const yPosition = Math.round(parentContainerBounds.h + triggerElementBounds.y);
         const height = Math.round(triggerElementBounds.height);
         const width = Math.round(triggerElementBounds.width);
 
-        await FSBL.Clients.RouterClient.query("dropdown-service-open", {
+        await FSBL.Clients.RouterClient.query(`${DropdownContainerAsync.serviceName}-${DropdownContainerAsync.topic.open}`, {
             position: { x: xPosition, y: yPosition, width, height }
         });
     }
